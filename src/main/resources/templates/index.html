@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Echo App</title>
+</head>
+<body>
+    <h1>Echo Application</h1>
+    <form action="/echo" method="post">
+        <input type="text" name="userInput" placeholder="Enter your message" required>
+        <button type="submit">Submit</button>
+    </form>
+    <hr>
+    <h2>XSS Vulnerabilities</h2>
+    <form action="/xss/direct" method="get">
+        <input type="text" name="input" placeholder="Test direct XSS" required>
+        <button type="submit">Direct XSS</button>
+    </form>
+    <br>
+    <form action="/xss/multifile" method="get">
+        <input type="text" name="data" placeholder="Test multi-file XSS" required>
+        <button type="submit">Multi-File XSS</button>
+    </form>
+    <br>
+    <form action="/xss/sourcesink" method="get">
+        <input type="text" name="payload" placeholder="Test source-sink XSS" required>
+        <button type="submit">Source-Sink XSS</button>
+    </form>
+    
+    <hr>
+    <h2>SQL Injection Vulnerabilities</h2>
+    <form action="/sqli/direct" method="get">
+        <input type="text" name="userId" placeholder="Test direct SQL injection" required>
+        <button type="submit">Direct SQLi</button>
+    </form>
+    <br>
+    <form action="/sqli/multifile" method="get">
+        <input type="text" name="username" placeholder="Test multi-file SQLi" required>
+        <button type="submit">Multi-File SQLi</button>
+    </form>
+    <br>
+    <form action="/sqli/sourcesink" method="get">
+        <input type="text" name="query" placeholder="Test source-sink SQLi" required>
+        <button type="submit">Source-Sink SQLi</button>
+    </form>
+    
+    <hr>
+    <h2>SSRF Vulnerabilities</h2>
+    <form action="/ssrf/direct" method="get">
+        <input type="text" name="url" placeholder="Test direct SSRF" required>
+        <button type="submit">Direct SSRF</button>
+    </form>
+    <br>
+    <form action="/ssrf/multifile" method="get">
+        <input type="text" name="endpoint" placeholder="Test multi-file SSRF" required>
+        <button type="submit">Multi-File SSRF</button>
+    </form>
+    <br>
+    <form action="/ssrf/sourcesink" method="get">
+        <input type="text" name="target" placeholder="Test source-sink SSRF" required>
+        <button type="submit">Source-Sink SSRF</button>
+    </form>
+    
+    <hr>
+    <h2>Protected Vulnerabilities (Not Directly Reachable)</h2>
+    <p><strong>Admin XSS:</strong> /protected/admin-xss (Requires admin session)</p>
+    <p><strong>Internal SQLi:</strong> /protected/internal-sqli (IP restricted)</p>
+    <p><strong>Debug SSRF:</strong> /protected/conditional-ssrf (Debug mode only)</p>
+</body>
+</html>
