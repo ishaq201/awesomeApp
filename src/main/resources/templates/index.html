@@ -61,6 +61,23 @@
     </form>
     
     <hr>
+    <h2>CVE-2024-38816 - Open Redirect</h2>
+    <form action="/redirect/direct" method="get">
+        <input type="text" name="url" placeholder="http://evil.com" required>
+        <button type="submit">Direct Redirect</button>
+    </form>
+    <br>
+    <form action="/redirect/login" method="get">
+        <input type="text" name="returnUrl" placeholder="http://malicious.site" required>
+        <button type="submit">Login Redirect</button>
+    </form>
+    <br>
+    <form action="/redirect/logout" method="get">
+        <input type="text" name="next" placeholder="javascript:alert('XSS')" required>
+        <button type="submit">Logout Redirect</button>
+    </form>
+    
+    <hr>
     <h2>Protected Vulnerabilities (Not Directly Reachable)</h2>
     <p><strong>Admin XSS:</strong> /protected/admin-xss (Requires admin session)</p>
     <p><strong>Internal SQLi:</strong> /protected/internal-sqli (IP restricted)</p>
