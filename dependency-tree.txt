@@ -1,0 +1,31 @@
+Dependency Tree for awesomeApp (Vulnerable Dependencies Demo)
+
+Direct Dependencies:
+├── org.springframework.boot:spring-boot-starter-web
+├── org.springframework.boot:spring-boot-starter-thymeleaf  
+├── org.springframework.boot:spring-boot-starter-data-jpa
+├── com.h2database:h2
+├── org.springframework:spring-web:6.1.8 (CVE-2024-38816)
+└── org.elasticsearch.client:elasticsearch-rest-high-level-client:7.15.0
+
+Transitive Dependencies (Key Vulnerabilities):
+org.elasticsearch.client:elasticsearch-rest-high-level-client:7.15.0
+├── org.elasticsearch:elasticsearch:7.15.0
+│   ├── org.apache.logging.log4j:log4j-api:2.14.1 (CVE-2021-44228)
+│   └── org.apache.logging.log4j:log4j-core:2.14.1 (CVE-2021-44228 - Log4Shell)
+├── org.elasticsearch.client:elasticsearch-rest-client:7.15.0
+└── org.apache.httpcomponents:httpclient:4.5.13
+
+Spring Boot Starters bring in:
+org.springframework.boot:spring-boot-starter-web
+├── org.springframework.boot:spring-boot-starter-tomcat
+├── org.springframework:spring-webmvc
+└── org.springframework.boot:spring-boot-starter-json
+
+Vulnerability Summary:
+- CVE-2024-38816: Direct dependency on vulnerable Spring Framework 6.1.8
+- CVE-2021-44228: Transitive dependency on Log4j 2.14.1 via Elasticsearch client
+- Log4Shell RCE: Exploitable through JNDI lookup in log messages
+
+Note: The Elasticsearch client 7.15.0 transitively includes the vulnerable Log4j 2.14.1,
+demonstrating how security vulnerabilities can be introduced through indirect dependencies.
